@@ -48,3 +48,70 @@ const rest1 = ( ...arg : [string, string , string, string] ) => {
 console.log(rest1("Apple", "Fun", "Company", "Moja"));
 
 
+
+// Object , Type alias and Interface
+
+//// obj
+const user : { name : string, phone : string , isActive : boolean} = {
+    name : "Jowel vai", 
+    phone : "0123456789",
+    isActive : true
+}
+
+
+// type
+
+type basicUser = {
+    name : string, 
+    phone : number, 
+    isActive : boolean,
+}
+
+type coreUserInfo = {
+    address : string,
+}
+
+type totalUser = basicUser & coreUserInfo;
+
+const user2 : totalUser = {
+    name : "Wazed", 
+    phone : 2323, 
+    isActive : false,
+    address : "nowa khali"
+}
+
+
+// Interface 
+
+interface abdullahBasicInfo {
+    name : string, 
+    roll : number, 
+    collegeActive : boolean,
+}
+
+interface abdullahBasicInfo {
+    present : number,
+}
+
+const abdullahInfo : abdullahBasicInfo = {
+    name : "Abdullah",
+    roll : 877051,
+    collegeActive : true, 
+    present : 34,
+}
+
+
+
+/**
+ * At last my montobbo : 
+ * 
+ * - why typescript are used?
+ * - what is the defrent between the TS and JS...
+ * - Type of defrent type of value for variable
+ * - How to add type in array, obj and function
+ * - Tuple, readOnly & Optional , default in function
+ * - Type alias and Interface
+ */
+
+
+
