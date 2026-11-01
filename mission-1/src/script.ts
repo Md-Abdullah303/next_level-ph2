@@ -26,4 +26,17 @@ const readonly1 : readonly number[] = [12, 2546, 2000]
 
 
 
+// Optional , default in function 
+
+//// Optional
+const thanksForJoining = (name : string, great ?: string ) => {
+    return `${name} ${great || "welcome"}`
+}
+
+//// default
+const great = (name:string, greating : string = "Welcome to NextGen,") => {
+    return greating + " " + name
+}
+console.log(thanksForJoining("abdullah"));
+
 
