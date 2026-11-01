@@ -40,3 +40,11 @@ const great = (name:string, greating : string = "Welcome to NextGen,") => {
 console.log(thanksForJoining("abdullah"));
 
 
+
+// Rest parameters {akhane ami tuple use korte pari abar naw korte pari}
+const rest1 = ( ...arg : [string, string , string, string] ) => {
+    return arg
+}
+console.log(rest1("Apple", "Fun", "Company", "Moja"));
+
+
