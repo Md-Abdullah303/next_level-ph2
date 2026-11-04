@@ -1,4 +1,4 @@
-// ts type
+//* ts type
 
 const myString : string = "hello world";
 const myNumber : number = 6516;
@@ -7,7 +7,7 @@ const mySymbol : symbol = Symbol();
 const myBigInt : bigint = 254n;
 
 
-// Array, Tuple & readonly modifier
+//* Array, Tuple & readonly modifier
 
 //// normal array define
 const arr = ["s1", "s2", "s3"] // with ts
@@ -21,12 +21,12 @@ const tuple1 : [string, number, boolean] = ["abdullah", 155, true]
 ////  when we use readonly modifier
 const readonly1 : readonly number[] = [12, 2546, 2000]
 
-//// now you can't push or change any by code
+//! now you can't push or change any by code
 // readonly1.push(3)
 
 
 
-// Optional , default in function 
+//* Optional , default in function 
 
 //// Optional
 const thanksForJoining = (name : string, great ?: string ) => {
@@ -41,7 +41,7 @@ console.log(thanksForJoining("abdullah"));
 
 
 
-// Rest parameters {akhane ami tuple use korte pari abar naw korte pari}
+//? Rest parameters {akhane ami tuple use korte pari abar naw korte pari}
 const rest1 = ( ...arg : [string, string , string, string] ) => {
     return arg
 }
@@ -49,7 +49,7 @@ console.log(rest1("Apple", "Fun", "Company", "Moja"));
 
 
 
-// Object , Type alias and Interface
+//* Object , Type alias and Interface
 
 //// obj
 const user : { name : string, phone : string , isActive : boolean} = {
@@ -103,7 +103,7 @@ const abdullahInfo : abdullahBasicInfo = {
 
 
 /**
- * At last my montobbo : 
+ * !At last my montobbo : 
  * 
  * - why typescript are used?
  * - what is the defrent between the TS and JS...
