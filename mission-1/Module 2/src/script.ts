@@ -3,3 +3,4 @@ import "./union.js";
 import "./v3-type-vs-interface.js";
 import "./v7-narrowing.js";
 import "./v9-generic.js";
+import "./v10-promies.js";
