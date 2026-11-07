@@ -2,4 +2,5 @@
 // import "./class-vs-object.js";
 // import "./encapsulation.js";
 // import "./ingeritance.js";
-import "./polymorphism.js";
+// import "./polymorphism.js";
+import "./abstraction.js";
