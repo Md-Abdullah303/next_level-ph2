@@ -12,4 +12,8 @@ const preview = {
     name: "ABD",
     description: "asdlfjasl",
 };
+const directoryEntry = {
+    id: 23,
+    name: "Bob",
+};
 export {};

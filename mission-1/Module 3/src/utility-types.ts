@@ -43,3 +43,19 @@ const preview: ProductPreview = {
   name: "ABD",
   description: "asdlfjasl",
 };
+
+//* Omit
+
+interface Employee {
+  id: number;
+  name: string;
+  salary: number;
+  nid: string;
+}
+
+type PublicEmployee = Omit<Employee, "salary" | "nid">;
+
+const directoryEntry: PublicEmployee = {
+  id: 23,
+  name: "Bob",
+};
