@@ -16,4 +16,9 @@ const directoryEntry = {
     id: 23,
     name: "Bob",
 };
+const apiUrls = {
+    development: "http://localhost:3000",
+    staging: "http://staging.api.com",
+    production: "http://api.com",
+};
 export {};

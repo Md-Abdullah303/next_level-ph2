@@ -59,3 +59,13 @@ const directoryEntry: PublicEmployee = {
   id: 23,
   name: "Bob",
 };
+
+//* Record
+
+type Environment = "development" | "staging" | "production";
+
+const apiUrls: Record<Environment, string> = {
+  development: "http://localhost:3000",
+  staging: "http://staging.api.com",
+  production: "http://api.com",
+};
