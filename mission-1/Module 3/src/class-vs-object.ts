@@ -10,4 +10,4 @@ class Employee {
 const employee = new Employee("Miraz", 12000);
 const employee2 = new Employee("mir", 32000);
 
-console.log(employee, employee2);
+// console.log(employee, employee2);

@@ -39,5 +39,5 @@ class Employee {
 const employee = new Employee("Mir", 23000);
 const employee2 = new Employee("Saheb", 32000);
 employee.baseSalary = 3423;
-console.log(employee.baseSalary);
 export {};
+// console.log(employee.baseSalary);
