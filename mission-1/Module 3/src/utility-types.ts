@@ -27,3 +27,19 @@ const initialize = (config: Required<Config>) => {
 };
 
 initialize({ apiKey: "asdfa", timeout: 3000 });
+
+//* Pick
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+}
+
+type ProductPreview = Pick<Product, "name" | "description">;
+
+const preview: ProductPreview = {
+  name: "ABD",
+  description: "asdlfjasl",
+};

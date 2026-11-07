@@ -8,4 +8,8 @@ const initialize = (config) => {
     // some logic
 };
 initialize({ apiKey: "asdfa", timeout: 3000 });
+const preview = {
+    name: "ABD",
+    description: "asdlfjasl",
+};
 export {};
