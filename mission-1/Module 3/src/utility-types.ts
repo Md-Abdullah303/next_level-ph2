@@ -16,7 +16,7 @@ const updateProfile = (id: string, date: Partial<User>) => {
 updateProfile("asdf", { name: "abd" }); //? here we try to update only name using normal way give error, but useing Partial that error are solve
 
 //* Required
-
+// Todo : required use kora hoy jate type ar sob kisu must diteii hobe ata korar jonno ar vetor type zdi ?. diyeo thake taileo key:value diteii hobe
 interface Config {
   apiKey?: string;
   timeout?: number;
@@ -29,7 +29,7 @@ const initialize = (config: Required<Config>) => {
 initialize({ apiKey: "asdfa", timeout: 3000 });
 
 //* Pick
-
+// Todo: kono type theke kono key:value niye new type make korar jonno Pick use kora hoy
 interface Product {
   id: number;
   name: string;
@@ -45,7 +45,7 @@ const preview: ProductPreview = {
 };
 
 //* Omit
-
+// Todo : old type theke kono key:value bad diye new type make korar jonno ata use kora hoy
 interface Employee {
   id: number;
   name: string;

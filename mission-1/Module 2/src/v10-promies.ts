@@ -10,13 +10,13 @@ interface ApiResponse<T> {
   massage: string;
 }
 
-// const fetchUser = async (): Promise<User> | undefined => {
+// const fetchUser = async (): Promise<User | undefined> => {
 //   try {
 //     const res = await fetch("/api/v10/some-endpoint");
 //     const data = (await res.json()) as ApiResponse<User>;
 
 //     if (!res.ok || !data.success) {
-//     //   throw new Error(`Failed fetch user Data: ${data.massage}`);
+//       //   throw new Error(`Failed fetch user Data: ${data.massage}`);
 //     }
 
 //     return data.data;
@@ -26,6 +26,7 @@ interface ApiResponse<T> {
 //     } else {
 //       console.error("Something was wrong!");
 //     }
+//     return undefined;
 //   }
 // };
 
