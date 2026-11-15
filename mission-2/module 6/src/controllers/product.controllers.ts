@@ -99,6 +99,28 @@ const productController = async (req: IncomingMessage, res: ServerResponse) => {
         data: products[index],
       }),
     );
+  } else if (method === "DELETE" && id !== null) {
+    const products = productService();
+    const index = products.findIndex((p: IProduct) => p.id === id);
+
+    if (index < 0) {
+      res.writeHead(404, { "Content-Type": "application/json" });
+      res.end(
+        JSON.stringify({
+          massage: "Product not found",
+        }),
+      );
+    }
+
+    products.splice(index, 1);
+    createProduct(products);
+
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(
+      JSON.stringify({
+        massage: "Product deleted successfully!",
+      }),
+    );
   }
 };
 
