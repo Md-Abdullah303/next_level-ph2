@@ -12,7 +12,7 @@ const routeHandler = (req: IncomingMessage, res: ServerResponse) => {
     res.writeHead(200, { "Content-Type": "application/json" });
     res.end(JSON.stringify({ massage: "The is the Root Route" }));
   } else if (url?.startsWith("/products")) {
-    // Product -> GET, PUT, PATCH, POST
+    //* Product -> GET, PUT, PATCH, POST
     productController(req, res);
   } else {
     //   console.log("This route is note defined");
