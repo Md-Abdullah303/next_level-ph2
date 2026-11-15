@@ -1,10 +1,16 @@
 import type { IncomingMessage, ServerResponse } from "http";
 import { productService } from "../service/product.service";
+import type { IProduct } from "../types/product";
 
 const productController = (req: IncomingMessage, res: ServerResponse) => {
   const url = req.url;
   const method = req.method;
+  const urlParams = url?.split("/");
+  const id =
+    urlParams && urlParams[1] === "products" ? Number(urlParams[2]) : null;
+  console.log(id);
 
+  //? GET all products
   if (url === "/products" && method === "GET") {
     // const products = [
     //   {
@@ -31,6 +37,17 @@ const productController = (req: IncomingMessage, res: ServerResponse) => {
       JSON.stringify({
         massage: "Products send successfully!",
         data: products,
+      }),
+    );
+  } else if (method === "GET" && id !== null) {
+    const products = productService();
+    const product = products.find((p: IProduct) => p.id == id);
+    console.log(product);
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(
+      JSON.stringify({
+        massage: "Product send successfully!",
+        data: product,
       }),
     );
   }
