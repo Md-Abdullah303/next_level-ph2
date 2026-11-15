@@ -1,21 +1,26 @@
 [
     {
-        "id": "1",
+        "id": 1,
         "name": "Product-1",
         "price": "30"
     },
     {
-        "id": "2",
+        "id": 2,
         "name": "Product-2",
         "price": "40"
     },
     {
-        "id": "3",
+        "id": 3,
         "name": "Product-3",
         "price": "35"
     },
     {
         "id": 1794753722217,
+        "name": "I-phone 17 Pro Max",
+        "price": "140000"
+    },
+    {
+        "id": 1794760790115,
         "name": "Product-3",
         "price": 400
     }
