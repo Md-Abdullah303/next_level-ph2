@@ -4,15 +4,14 @@ import express, {
   type Response,
 } from "express";
 import { Pool } from "pg";
+import config from "./config";
 const app: Application = express();
-const port = 5000;
 
 //* meddelware
 app.use(express.json());
 
 const pool = new Pool({
-  connectionString:
-    "postgresql://neondb_owner:npg_mGnLys4CfT8A@ep-cool-sun-ao162iyl-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=false&channel_binding=require",
+  connectionString: config.database_url,
 });
 // console.log(pool);
 
@@ -198,6 +197,6 @@ app.delete("/api/v1/users/:id", async (req: Request, res: Response) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`This is root route: ${port}`);
+app.listen(config.port, () => {
+  console.log(`This is root route: ${config.port}`);
 });
