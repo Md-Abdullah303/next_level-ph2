@@ -79,6 +79,55 @@ app.post("/api/v1/users", async (req: Request, res: Response) => {
   }
 });
 
+app.get("/api/v1/users", async (req: Request, res: Response) => {
+  try {
+    const result = await pool.query(`
+      SELECT * FROM users
+      `);
+
+    // console.log(result);
+    res.status(200).json({
+      success: true,
+      massage: "User retrieved successfully",
+      data: result.rows,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      massage: error?.massage,
+      data: error,
+    });
+  }
+});
+
+app.get("/api/v1/users/:id", async (req: Request, res: Response) => {
+  try {
+    // const {id}  = req.params
+    const id = req.params.id;
+
+    const result = await pool.query(
+      `
+      SELECT * FROM users
+      WHERE id = $1
+      `,
+      [id],
+    );
+    // console.log(result);
+
+    res.status(200).json({
+      status: true,
+      massage: "Successfully Retrieved User Data!",
+      data: result.rows[0],
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      status: false,
+      massage: error?.massage,
+      data: error,
+    });
+  }
+});
+
 app.listen(port, () => {
   console.log(`This is root route: ${port}`);
 });
