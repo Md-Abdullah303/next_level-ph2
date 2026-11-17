@@ -7,140 +7,19 @@ import { pool } from "./db";
 import { userRouter } from "./modules/users/user.route";
 const app: Application = express();
 
-//* meddelware
+//* middleware
 app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/api/v1/users", userRouter);
+
 app.get("/", (req: Request, res: Response) => {
-  //   res.send("Hello World!");
-  // console.log(res);
   res.status(200).json({
     success: true,
     massage: "This is root route",
     author: "PH",
   });
-});
-
-app.use("/api/v1/users", userRouter);
-
-app.get("/api/v1/users", async (req: Request, res: Response) => {
-  try {
-    const result = await pool.query(`
-      SELECT * FROM users
-      `);
-
-    // console.log(result);
-    res.status(200).json({
-      success: true,
-      massage: "User retrieved successfully",
-      data: result.rows,
-    });
-  } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      massage: error?.massage,
-      data: error,
-    });
-  }
-});
-
-app.get("/api/v1/users/:id", async (req: Request, res: Response) => {
-  try {
-    // const {id}  = req.params
-    const id = req.params.id;
-
-    const result = await pool.query(
-      `
-      SELECT * FROM users
-      WHERE id = $1
-      `,
-      [id],
-    );
-    // console.log(result);
-
-    res.status(200).json({
-      success: true,
-      massage: "Successfully Retrieved User Data!",
-      data: result.rows[0],
-    });
-  } catch (error: any) {
-    res.status(500).json({
-      status: false,
-      massage: error?.massage,
-      data: error,
-    });
-  }
-});
-
-app.put("/api/v1/users/:id", async (req: Request, res: Response) => {
-  try {
-    const { id } = req.params;
-    const { name, password, age, is_Active } = req.body;
-
-    const result = await pool.query(
-      `
-      UPDATE users 
-      SET
-      name = COALESCE($1, name),
-      password = COALESCE($2, password),
-      age = COALESCE($3, age),
-      is_Active = COALESCE($4, is_Active),
-      updated_at = NOW()
-
-      WHERE id=$5 RETURNING *
-      `,
-      [name ?? null, password ?? null, age ?? null, is_Active ?? null, id],
-    );
-
-    // console.log(result);
-    res.status(200).json({
-      success: true,
-      massage: "User Updated Successfully!",
-      data: result.rows[0],
-    });
-  } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      massage: error?.massage,
-      data: error,
-    });
-  }
-});
-
-app.delete("/api/v1/users/:id", async (req: Request, res: Response) => {
-  try {
-    const { id } = req.params;
-
-    const result = await pool.query(
-      `
-      DELETE FROM users
-      WHERE id=$1
-      `,
-      [id],
-    );
-
-    // console.log(result);
-
-    if (result.rowCount === 0) {
-      res.status(404).json({
-        success: false,
-        massage: "User not found",
-      });
-    } else {
-      res.status(200).json({
-        success: true,
-        massage: "User Deleted Successfully!",
-        // data: error,
-      });
-    }
-  } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      massage: error?.massage,
-      data: error,
-    });
-  }
 });
 
 export default app;
