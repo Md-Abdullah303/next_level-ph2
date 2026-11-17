@@ -1,0 +1,29 @@
+Repo: https://github.com/Apollo-Level2-Web-Dev/be-a-node-express-expert-b8/tree/module-8
+
+What is Design Pattern?
+* Code base ke aro opmizae  করা , সুন্দর করে কোড লেখার জন্য আমরা জেই ফাইল structure flow করি তাকেই Software Design Pattern বলে ।
+
+
+There are tow Designer pattern that we use most
+* MVC
+* Modular
+
+// MVC - Model View Controller
+Model : Database Schema, Business Logic
+Views : Ui/Client, Template Engine
+Controllers : Request, Response
+
+// Modular Pattern Benefits
+- Scalability
+- Maintainability
+- Better Refactoring
+- Effecient Development
+
+
+Rule
+DRY - Don't Repeat Yourself
+
+
+//! now we update our old server
+
+
