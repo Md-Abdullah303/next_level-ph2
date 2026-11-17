@@ -4,6 +4,7 @@ import express, {
   type Response,
 } from "express";
 import { pool } from "./db";
+import { userRouter } from "./modules/users/user.route";
 const app: Application = express();
 
 //* meddelware
@@ -21,34 +22,7 @@ app.get("/", (req: Request, res: Response) => {
   });
 });
 
-app.post("/api/v1/users", async (req: Request, res: Response) => {
-  try {
-    // console.log(req.body);
-    const { name, email, password, age } = req.body;
-
-    const result = await pool.query(
-      `
-    INSERT INTO users (name, email, password, age)
-    VALUES ($1,$2,$3,$4) RETURNING *
-      `,
-      [name, email, password, age],
-    );
-
-    // console.log(result);
-
-    res.status(201).json({
-      success: true,
-      massage: "User Created!",
-      data: result.rows[0],
-    });
-  } catch (error: any) {
-    res.status(500).json({
-      success: false,
-      massage: error?.massage,
-      data: error,
-    });
-  }
-});
+app.use("/api/v1/users", userRouter);
 
 app.get("/api/v1/users", async (req: Request, res: Response) => {
   try {

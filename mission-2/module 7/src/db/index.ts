@@ -4,7 +4,6 @@ import config from "../config";
 export const pool = new Pool({
   connectionString: config.database_url,
 });
-// console.log(pool);
 
 export const initDB = async () => {
   try {
