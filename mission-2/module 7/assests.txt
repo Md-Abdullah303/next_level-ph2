@@ -53,4 +53,9 @@ Policy-Based (PBAC) :
 2. Verified User => Money Withdraw
 
 
+///
 
+JWT have 3 parts
+Header : Algorithem and Type buja jay
+Payload : Data
+Signature : algorithm , secret key and token create
