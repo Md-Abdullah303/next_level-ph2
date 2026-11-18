@@ -1,1 +1,56 @@
 Repo: https://github.com/Apollo-Level2-Web-Dev/be-a-node-express-expert-b8/tree/module-7
+
+
+Authentication have 2 parts
+- Session-Based
+- JWT-Based
+
+// Session Based
+- Server এ সব Session Store করা হবে 
+- Client থেকে Server একটা Session ID . Cookie পাধাবে
+- Every Request Sent the Cookie to Server
+- Server Verify that cookie and Identify the User
+
+এটা Sateful মানে সব Server a save থাকে
+তাই এটার একটা দুর্বলতা আছে ঃ Big Server এ কাজ করতে আনেক সমসসা হয়
+
+
+// JWT Based
+- Login করলে Server Token make করে 
+- Token Server থেকে Client
+- Every request এ Client Server কে Token পাদাই
+- Server Token verify করে User Identify করে
+
+এটা Sateless মানে  Server কিছু save kore na
+Sob kisu client thekeii handle kora hoy
+
+
+
+///* Authorization Types
+- Role-Based (RBAC)
+- Permission-Based
+- Attribute-Based (ABAC)
+- Policy-Based (PBAC)
+
+
+Role Based : 
+1. Admin => Sob access thake
+2. User => Limited
+3. Agent => Kisu Permission thake
+
+Permission Based : 
+1. User1 => Read+write
+2. User2 => Only Read
+3. User3 => Only write
+
+Attribute Based (ABAC) :
+1. Role = Admin
+2. Location = Based
+3. Time = Office Hours
+
+Policy-Based (PBAC) :
+1. Premium User => Spacial Route
+2. Verified User => Money Withdraw
+
+
+
