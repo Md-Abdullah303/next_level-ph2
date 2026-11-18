@@ -21,8 +21,31 @@ export const initDB = async () => {
     );
              
       `);
+
+    await pool.query(`
+        CREATE TABLE IF NOT EXISTS profiles(
+        id SERIAL PRIMARY KEY,
+        user_id INT UNIQUE REFERENCES users(id) ON DELETE CASCADE,
+
+        bio TEXT,
+        address TEXT,
+        phone VARCHAR(15),
+        gender VARCHAR(15),
+
+        created_at TIMESTAMP DEFAULT NOW(),
+        updated_at TIMESTAMP DEFAULT NOW()
+        );
+        `);
     console.log("Database connected!");
   } catch (error) {
     console.log(error);
   }
 };
+
+/**
+ * ?There are 4 type of Relession ship
+ * one to one
+ * one to many
+ * many to one
+ * many to many
+ */
