@@ -43,3 +43,73 @@ app.use(
 - 2nd src file config/index.ts file nei
 - 3rd config name akta obj nei jar vetor akta sokol variable ar value niye nibo then ai obj ke export default kore dibo
 - 4th .env file আমরা এর পাশাপাশি ফাইল এ বা পাশাপাশি ফোল্ডার এর ফাইল use করতে পারি, কিন্তু আমরা এখানে আনেক দূরে use করতে চাইতাসি তাই `dotenv.config({ path: path.join(process.cwd(), ".env") });` ব্যাবহার করে এই ফাইল কে .env চিনায়া দিতাসি
+
+## Database connect to server
+
+- 1st src/config এর ভেতর db.ts create korbo
+- 2nd pg package theke Pool class ke ber kore nibo
+- 3rd Pool class diye akta connection make korbo DB ar sathe :
+
+```typescript
+const pool = new Pool({
+  connectionString: config.connection_string,
+});
+```
+
+- 4th DB ar connection string .env file a rakhbo
+- 5th schema make করার জন্য src/config এর ভেতর initDb.ts নিবো এবং সেখানে লিখবো:
+
+```typescript
+import { pool } from "./db";
+
+const createTableQuery = `
+    CREATE TABLE IF NOT EXISTS users(
+    id SERIAL PRIMARY KEY, 
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(25) CHECK (role IN ('admin', 'member')) DEFAULT 'member',
+    is_active BOOLEAN DEFAULT true,
+
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+
+    );
+`;
+
+export const initDB = async () => {
+  await pool.query(createTableQuery);
+  console.log("Database table created!");
+};
+```
+
+সর্বশেষ এ আমাদের টেবিল তইরী করা হইয়া গেসে তো এখন আমরা src এর ভেতর modules নামে একটা ফোল্ডার নিবো then এই ফোল্ডার এর ভেতর defrent feature এর জন্য কাজ করব
+evey modules folder have :
+
+- event.route.ts
+- event.controller.ts
+- event.service.ts
+- event.interface.ts (optional)
+
+## Password Hashing
+
+password hashing korar jonno amra `npm i bcryptjs` করি সুন্দর করে এটা করতে গেলে এমনে করা যায়,
+
+- utils ফোল্ডারে passwordHelpers বা অন্য কনও নামে ফাইল make korbo
+- hassword, comparepassword এর মত কাজ ওখানে করব then OBJ ভেতর দিয়ে exprt করে দিবো
+- সর্বশেষ এ post method এ এটা use করব password hash korar jonno
+
+## Modules folder এর বিবরণ
+
+- route.ts এ আমরা বিভিন্ন route গুলোকে সামলাবো , যে কনটা কোন route এ যাবে, পরে এখান থেকে তার crontroller.ts পাদাইয়া দিবো।
+- controller.ts এ আমরা server/client response handle করব, যদি কনও Bussiness logic handle করার
+- service.ts এ আমরা Bussiness logic handle controller এ পাদাইয়া দিবো। সেখান থেকে controller response send করে দিবে।
+
+## JWT token create
+
+- 1st src/utils/jwthelpers.ts create করতে হবে
+- 2nd jwthelpers.ts ar vetor amra genereateToken function make korbo , ja return korbe jwt token
+- jwt token retunr korar jonno `npm i jsonwebtoken` kore seta import korbo then jwt ar sign method use korbo, ja (DataBody, jwt_secret, expaire_date nibe)
+- 3rd jwthelpers.ts ar vetor amra verifyToken fucntion korbo, ja token ta verify kina ta return korbe
+- jwt ar verify method use korbo, ja (DataBody, jwt_secret)
+- last make a obj then export it.
