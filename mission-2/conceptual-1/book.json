@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1",
+        "title": "PH Book",
+        "author": "Jhanker Vai",
+        "price": "500"
+    },
+    {
+        "id": "2",
+        "title": "Node Js concept",
+        "author": "N/A",
+        "price": "600"
+    }
+]

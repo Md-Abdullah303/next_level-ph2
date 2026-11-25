@@ -7,7 +7,7 @@ import { sendResponse } from "../utlis/sendResponse";
 const productController = async (req: IncomingMessage, res: ServerResponse) => {
   const url = req.url;
   const method = req.method;
-  const urlParams = url?.split("/");
+  const urlParams = url?.split("/"); // "/products/id"  ->  ["", "products", "id"]
   const id =
     urlParams && urlParams[1] === "products" ? Number(urlParams[2]) : null;
   console.log(id);
