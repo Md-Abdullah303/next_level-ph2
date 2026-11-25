@@ -1,11 +1,10 @@
 import app from "./app";
-
-const PORT = 5000;
+import config from "./config";
 
 const startServer = () => {
   try {
-    app.listen(PORT, () => {
-      console.log("Server is Running on PORT:", PORT);
+    app.listen(config.port, () => {
+      console.log("Server is Running on PORT:", config.port);
     });
   } catch (error) {
     console.log("Some thing was wrong!", error);
