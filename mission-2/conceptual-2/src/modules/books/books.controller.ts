@@ -20,7 +20,7 @@ const createBooks: RequestHandler = async (req: Request, res: Response) => {
 };
 const getAllBooks: RequestHandler = async (req: Request, res: Response) => {
   try {
-    const result = await booksService.getAllBooksFromDB();
+    const result = await booksService.getAllBooksFromDB(req.query);
 
     res.status(200).json({
       success: true,
@@ -37,10 +37,16 @@ const getAllBooks: RequestHandler = async (req: Request, res: Response) => {
 };
 const updateBooks = async (req: Request, res: Response) => {
   try {
+    const { id } = req.params;
+    const result = await booksService.updatedBooksIntoDB(
+      id as string,
+      req.body,
+    );
+    // console.log(result, id);
     res.status(200).json({
       success: true,
-      message: "Book was Created.",
-      //   data: result,
+      message: "Book was Updated.",
+      data: result,
     });
   } catch (error: any) {
     res.status(500).json({

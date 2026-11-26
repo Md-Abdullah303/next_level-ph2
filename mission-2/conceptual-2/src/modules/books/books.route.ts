@@ -5,7 +5,7 @@ const router = Router();
 
 router.get("/", booksController.getAllBooks);
 router.post("/", booksController.createBooks);
-router.put("/", booksController.updateBooks);
-router.delete("/", booksController.deleteBooks);
+router.patch("/:id", booksController.updateBooks);
+router.delete("/:id", booksController.deleteBooks);
 
 export const booksRouter = router;
