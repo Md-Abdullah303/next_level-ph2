@@ -2,6 +2,7 @@ import express from "express";
 import type { Request, Response } from "express";
 import { authRouter } from "./modules/auth/auth.route";
 import cors from "cors";
+import { booksRouter } from "./modules/books/books.route";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(
 );
 
 app.use("/api/auth", authRouter);
+app.use("/api/books", booksRouter);
 
 app.get("/", (req: Request, res: Response) => {
   res.status(200).json({

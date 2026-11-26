@@ -13,6 +13,22 @@ const createTableQuery = `
     updated_at TIMESTAMP DEFAULT NOW()
 
     );
+
+
+
+    CREATE TABLE IF NOT EXISTS books(
+    id SERIAL PRIMARY KEY, 
+    title VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    isbn VARCHAR(255) UNIQUE NOT NULL,
+    total_copies INT NOT NULL CHECK (total_copies >= 0),
+    available_copies INT NOT NULL CHECK (available_copies >= 0),
+    
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+
+    );
 `;
 
 export const initDB = async () => {
