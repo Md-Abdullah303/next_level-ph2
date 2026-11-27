@@ -59,8 +59,9 @@ const getAllBooksFromDB = async (query: any) => {
 
   return result.rows;
 };
-const deleteBooksIntoDB = () => {
-  return;
+const deleteBooksIntoDB = async (id: string) => {
+  const result = await pool.query(`DELETE FROM books WHERE id=$1`, [id]);
+  return result.rows[0];
 };
 
 export const booksService = {

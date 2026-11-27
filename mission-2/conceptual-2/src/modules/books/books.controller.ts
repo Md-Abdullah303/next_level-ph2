@@ -58,10 +58,12 @@ const updateBooks = async (req: Request, res: Response) => {
 };
 const deleteBooks = async (req: Request, res: Response) => {
   try {
+    const { id } = req.params;
+    const result = await booksService.deleteBooksIntoDB(id as string);
     res.status(200).json({
       success: true,
-      message: "Book was Created.",
-      //   data: result,
+      message: "Book was Deleted Successfully!.",
+      data: result,
     });
   } catch (error: any) {
     res.status(500).json({

@@ -113,3 +113,33 @@ password hashing korar jonno amra `npm i bcryptjs` করি সুন্দর 
 - 3rd jwthelpers.ts ar vetor amra verifyToken fucntion korbo, ja token ta verify kina ta return korbe
 - jwt ar verify method use korbo, ja (DataBody, jwt_secret)
 - last make a obj then export it.
+
+## Global Error Handler
+
+- src/middleware ar vetor globalErrorHandler.ts name akta folder create korbo
+- akta funciton make korbo jar peramitter a hobe `(err,req,res,next)` error all time first a bosbe
+- (err) theke statusCode ber kore nibo
+- message ber kore nibo
+
+```typescript
+import type { NextFunction, Request, Response } from "express";
+
+const globalErrorHandler = (
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  let statusCode = err.statusCode ?? 500;
+  let message = err.message ?? "Internal Server Error";
+  let errDetails = err;
+
+  res.status(statusCode).json({
+    success: false,
+    message: message,
+    data: errDetails,
+  });
+};
+
+export default globalErrorHandler;
+```
